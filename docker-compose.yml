@@ -1,0 +1,15 @@
+version: '3.9'  # Utilise la dernière version stable de la syntaxe Docker Compose
+
+services:
+  nextcloud:
+    image: nextcloud:latest  # Image officielle de Nextcloud
+    container_name: nextcloud
+    ports:
+      - "8585:80"  # Redirection du port 80 du conteneur vers le port 8585 de ta machine
+    volumes:
+      - nextcloud:/var/www/html  # Persistance des données Nextcloud
+    restart: unless-stopped  # Redémarrage automatique sauf arrêt manuel
+
+volumes:
+  nextcloud:
+    driver: local  # Volume local Docker
